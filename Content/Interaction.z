@@ -1,0 +1,47 @@
+class Interaction : ZilchComponent
+{
+    
+    var Sw1 : Integer = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted,     this.OnCollisionStarted);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var door = this.Space.FindObjectByName("Door");
+        
+        if(this.Sw1 == -16){
+            door.Sprite.Visible = false;
+            door.BoxCollider.Ghost = true;
+        }
+        
+        Console.WriteLine("`this.Sw1`");
+    }
+    
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        var sw_1 = this.Space.FindObjectByName("Switch");
+        var sw_2 = this.Space.FindObjectByName("Switch2");
+        var sw_3 = this.Space.FindObjectByName("Switch3");
+        
+        if(event.OtherObject.Name == "Switch"){
+            this.Sw1 += 5;
+            sw_1.Sprite.Visible = false;
+            sw_1.Transform.Translation = Real3(100,100,0);
+        }
+        if(event.OtherObject.Name == "Switch2"){
+            this.Sw1 -= 3;
+            sw_2.Sprite.Visible = false;
+            sw_2.Transform.Translation = Real3(100,100,0);
+        }
+        if(event.OtherObject.Name == "Switch3"){
+            this.Sw1 *= 7;
+            sw_3.Sprite.Visible = false;
+            sw_3.Transform.Translation = Real3(100,100,0);
+        }
+    
+    }
+}

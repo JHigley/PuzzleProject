@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "PuzzleProject",
+	uint64 LibraryId = 56721182223ce969,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},

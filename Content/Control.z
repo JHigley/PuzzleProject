@@ -1,0 +1,48 @@
+class Control : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var player = this.Space.FindObjectByName("Player");
+        
+    var velocity = local Real3(0,0,0);
+
+      if (Zero.Keyboard.KeyIsDown(Keys.Right))
+      {
+          velocity += local Real3(0.8,0,0);
+      }
+      if (Zero.Keyboard.KeyIsDown(Keys.Left))
+      {
+          velocity += local Real3(-0.8,0,0);
+      }
+    
+      if (Zero.Keyboard.KeyIsDown(Keys.Up))
+      {
+          velocity += local Real3(0,0.8,0);
+      }
+      if (Zero.Keyboard.KeyIsDown(Keys.Down))
+      {
+          velocity += local Real3(0,-0.8,0);
+      }
+      
+if(player.RigidBody.Velocity.X <= -20){
+        velocity -= local Real3(-1,0,0);
+}
+
+if(player.RigidBody.Velocity.X >= 20){
+        velocity -= local Real3(1,0,0);
+}
+
+if(player.RigidBody.Velocity.Y <= -75){
+        velocity -= local Real3(0,-1,0);
+}
+
+    player.RigidBody.Velocity += velocity;
+
+
+    }
+}
