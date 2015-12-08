@@ -1,0 +1,54 @@
+class Timer : ZilchComponent
+{
+    
+        var Time : Real = 0;
+        var Seconds : Real = 0;
+        var Minutes : Real = 0;
+        var Hours : Real = 0;
+        
+        var HSecond : Real = 0;
+        var HMinute : Real = 0;
+        var HHour : Real = 0;
+        
+
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+
+        var display = this.Space.FindObjectByName("timeDisplay");
+
+        
+this.Time += event.Dt;    
+
+    if(this.Time > 1){
+        this.Time = 0;
+        this.Seconds += 1;
+            if(this.Seconds > 9){
+                this.HSecond += 1;
+                this.Seconds = 0;
+                    if(this.HSecond > 5){
+                        this.Minutes += 1;
+                        this.HSecond = 0;
+                            if(this.Minutes > 9){
+                                this.HMinute += 1;
+                                this.Minutes = 0;
+                                    if(this.HMinute > 5){
+                                        this.Hours += 1;
+                                        this.HMinute = 0;
+                                            if(this.Hours > 9){
+                                                this.HHour += 1;
+                                                this.Hours = 0;
+                                            }
+                                    }
+                            }
+                    }
+            }
+    }
+        display.SpriteText.Text = "`this.HHour``this.Hours`:`this.HMinute``this.Minutes`:`this.HSecond``this.Seconds`";
+
+}
+}
