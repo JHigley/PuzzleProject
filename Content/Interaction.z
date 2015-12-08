@@ -1,6 +1,9 @@
 class Interaction : ZilchComponent
 {
     
+    var Puzzle1 : Level = Level.Find("Puzzle1");
+    var Puzzle2 : Level = Level.Find("Puzzle2");
+    
     var Sw1 : Integer = 0;
     
     function Initialize(init : CogInitializer)
@@ -13,10 +16,19 @@ class Interaction : ZilchComponent
     {
         var door = this.Space.FindObjectByName("Door");
         
+    if(this.Space.CurrentLevel == this.Puzzle1){
         if(this.Sw1 == -16){
             door.Sprite.Visible = false;
             door.BoxCollider.Ghost = true;
         }
+    }
+    
+    if(this.Space.CurrentLevel == this.Puzzle2){
+        if(this.Sw1 == 32){
+            door.Sprite.Visible = false;
+            door.BoxCollider.Ghost = true;
+        }
+    }
         
         Console.WriteLine("`this.Sw1`");
     }
@@ -27,6 +39,30 @@ class Interaction : ZilchComponent
         var sw_2 = this.Space.FindObjectByName("Switch2");
         var sw_3 = this.Space.FindObjectByName("Switch3");
         
+//if(this.Space.CurrentLevel == this.Puzzle1){
+        if(event.OtherObject.Name == "Switch"){
+            this.Sw1 += 5;
+            sw_1.Sprite.Visible = false;
+            sw_1.Transform.Translation = Real3(100,100,0);
+        }
+        if(event.OtherObject.Name == "Switch2"){
+            this.Sw1 -= 3;
+            sw_2.Sprite.Visible = false;
+            sw_2.Transform.Translation = Real3(100,100,0);
+        }
+        if(event.OtherObject.Name == "Switch3"){
+            this.Sw1 *= 7;
+            sw_3.Sprite.Visible = false;
+            sw_3.Transform.Translation = Real3(100,100,0);
+        }
+        
+        if(event.OtherObject.Name == "Goal"){
+            this.Space.LoadLevel(this.Puzzle2);
+        }
+    
+//    }
+    
+/*if(this.Space.CurrentLevel == this.Puzzle2){
         if(event.OtherObject.Name == "Switch"){
             this.Sw1 += 5;
             sw_1.Sprite.Visible = false;
@@ -43,5 +79,8 @@ class Interaction : ZilchComponent
             sw_3.Transform.Translation = Real3(100,100,0);
         }
     
-    }
+    }*/
+    
 }
+}
+

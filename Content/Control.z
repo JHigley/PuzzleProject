@@ -13,20 +13,20 @@ class Control : ZilchComponent
 
       if (Zero.Keyboard.KeyIsDown(Keys.Right))
       {
-          velocity += local Real3(0.8,0,0);
+          velocity += local Real3(1.2,0,0);
       }
       if (Zero.Keyboard.KeyIsDown(Keys.Left))
       {
-          velocity += local Real3(-0.8,0,0);
+          velocity += local Real3(-1.2,0,0);
       }
     
       if (Zero.Keyboard.KeyIsDown(Keys.Up))
       {
-          velocity += local Real3(0,0.8,0);
+          velocity += local Real3(0,1.2,0);
       }
       if (Zero.Keyboard.KeyIsDown(Keys.Down))
       {
-          velocity += local Real3(0,-0.8,0);
+          velocity += local Real3(0,-1.2,0);
       }
       
 if(player.RigidBody.Velocity.X <= -20){
@@ -43,6 +43,11 @@ if(player.RigidBody.Velocity.Y <= -75){
 
     player.RigidBody.Velocity += velocity;
 
+
+    if (Zero.Keyboard.KeyIsPressed(Keys.Space))
+    {
+        this.Space.ReloadLevel();
+    }
 
     }
 }
