@@ -1,7 +1,7 @@
 class Interaction : ZilchComponent
 {
     
-    var Puzzle1 : Level = Level.Find("Puzzle1");
+    var Puzzle1 : Level = Level.Find("Maze1");
     var Puzzle2 : Level = Level.Find("Puzzle2");
     
     var Sw1 : Integer = 0;
@@ -15,6 +15,9 @@ class Interaction : ZilchComponent
     function OnLogicUpdate(event : UpdateEvent)
     {
         var door = this.Space.FindObjectByName("Door");
+        var sw_1 = this.Space.FindObjectByName("Switch").Transform.Translation;
+        var sw_2 = this.Space.FindObjectByName("Switch2").Transform.Translation;
+        var sw_3 = this.Space.FindObjectByName("Switch3").Transform.Translation;
         
     if(this.Space.CurrentLevel == this.Puzzle1){
         if(this.Sw1 == -16){
