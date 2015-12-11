@@ -34,6 +34,20 @@ class Interaction : ZilchComponent
     }
         
         Console.WriteLine("`this.Sw1`");
+        
+        
+    if(sw_1 == Real3(100,100,0) && sw_2 == Real3(100,100,0) && sw_3 == Real3(100,100,0)){
+        this.Sw1 = 0;
+        
+        sw_1 = Real3(263.085,-76.3407,0);
+        this.Space.FindObjectByName("Switch").Sprite.Visible = true;
+        
+        sw_2 = Real3(153.991,25.7262,0);
+        this.Space.FindObjectByName("Switch2").Sprite.Visible = true;
+        
+        sw_3 = Real3(86.1554,56.6009,0);
+        this.Space.FindObjectByName("Switch3").Sprite.Visible = true;
+    }
     }
     
     function OnCollisionStarted(event : CollisionEvent)
@@ -42,26 +56,38 @@ class Interaction : ZilchComponent
         var sw_2 = this.Space.FindObjectByName("Switch2");
         var sw_3 = this.Space.FindObjectByName("Switch3");
         
+        var sw1Hit = false;
+        var sw2Hit = false;
+        var sw3Hit = false;
+        
 //if(this.Space.CurrentLevel == this.Puzzle1){
         if(event.OtherObject.Name == "Switch"){
             this.Sw1 += 5;
             sw_1.Sprite.Visible = false;
-            sw_1.Transform.Translation = Real3(100,100,0);
+          //  sw_1.Transform.Translation = Real3(100,100,0);
+            
+            sw1Hit = true;
+                
         }
         if(event.OtherObject.Name == "Switch2"){
             this.Sw1 -= 3;
             sw_2.Sprite.Visible = false;
-            sw_2.Transform.Translation = Real3(100,100,0);
+           // sw_2.Transform.Translation = Real3(100,100,0);
+            
+            sw2Hit = true;
         }
         if(event.OtherObject.Name == "Switch3"){
             this.Sw1 *= 7;
             sw_3.Sprite.Visible = false;
-            sw_3.Transform.Translation = Real3(100,100,0);
+           // sw_3.Transform.Translation = Real3(100,100,0);
+           
+           sw3Hit = true;
         }
         
         if(event.OtherObject.Name == "Goal"){
             this.Space.LoadLevel(this.Puzzle2);
         }
+
     
 //    }
     

@@ -15,10 +15,28 @@ class Control : ZilchComponent
       {
           velocity += local Real3(1.2,0,0);
       }
+      
       if (Zero.Keyboard.KeyIsDown(Keys.Left))
       {
           velocity += local Real3(-1.2,0,0);
       }
+
+
+if(Zero.Keyboard.KeyIsPressed(Keys.Right)){
+    player.Sprite.SpriteSource = SpriteSource.Find("maze guy animation");
+}
+
+if(Zero.Keyboard.KeyIsPressed(Keys.Left)){
+    player.Sprite.SpriteSource = SpriteSource.Find("maze guy animation left");
+}
+
+if(Zero.Keyboard.KeyIsDown(Keys.G)){
+    player.BoxCollider.Ghost = true;
+}
+else{
+    player.BoxCollider.Ghost = false;
+}
+
     
       if (Zero.Keyboard.KeyIsDown(Keys.Up))
       {

@@ -2,14 +2,14 @@ ImageContent =
 {
 	SpriteSourceBuilder = 
 	{
-		string Name = "maze guy animation",
-		uint64 ResourceId = 567e01cd639eef46,
+		string Name = "maze guy animation left",
+		uint64 ResourceId = 567ccddac273615c,
 		uint64 AtlasId = 5274cf95e4a661fd,
-		uint FrameSizeX = 75,
+		uint FrameSizeX = 76,
 		uint FrameSizeY = 89,
 		uint FrameCount = 5,
 		float FrameDelay = 0.142857149,
-		float OriginX = 37,
+		float OriginX = 38,
 		float OriginY = 44,
 		float PixelsPerUnit = 64,
 		bool Smoothing = true,
