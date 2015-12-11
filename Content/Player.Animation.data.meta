@@ -1,0 +1,9 @@
+DataContent = 
+{
+	RichAnimationBuilder = 
+	{
+		string Name = "Player",
+		uint64 ResourceId = 567e0259418d7ebd,
+		string PreviewArchetype = "",
+	},
+},
