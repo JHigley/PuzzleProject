@@ -2,7 +2,7 @@ class Interaction : ZilchComponent
 {
     
     var Puzzle1 : Level = Level.Find("Maze1");
-    var Puzzle2 : Level = Level.Find("Puzzle2");
+    var Puzzle2 : Level = Level.Find("Maze2");
     
     var Sw1 : Integer = 0;
     
