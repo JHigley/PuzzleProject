@@ -1,6 +1,10 @@
 class Interaction : ZilchComponent
 {
     
+    var Sw1Hit : SoundCue = SoundCue.Find("SwHit");
+    var Sw2Hit : SoundCue = SoundCue.Find("DoorOpen");
+    var Sw3Hit : SoundCue = SoundCue.Find("Switch3");
+    
     var Puzzle1 : Level = Level.Find("Maze1");
     var Puzzle2 : Level = Level.Find("Maze2");
     
@@ -66,6 +70,7 @@ class Interaction : ZilchComponent
             sw_1.Sprite.Visible = false;
           //  sw_1.Transform.Translation = Real3(100,100,0);
             
+        this.Space.SoundSpace.PlayCue(this.Sw1Hit);
             sw1Hit = true;
                 
         }
@@ -74,6 +79,7 @@ class Interaction : ZilchComponent
             sw_2.Sprite.Visible = false;
            // sw_2.Transform.Translation = Real3(100,100,0);
             
+        this.Space.SoundSpace.PlayCue(this.Sw2Hit);
             sw2Hit = true;
         }
         if(event.OtherObject.Name == "Switch3"){
@@ -81,6 +87,7 @@ class Interaction : ZilchComponent
             sw_3.Sprite.Visible = false;
            // sw_3.Transform.Translation = Real3(100,100,0);
            
+        this.Space.SoundSpace.PlayCue(this.Sw3Hit);
            sw3Hit = true;
         }
         
