@@ -10,14 +10,44 @@ class Interaction : ZilchComponent
     
     var Sw1 : Integer = 0;
     
+    var Timer : Real = 0;
+    var Seconds : Real = 0;
+    
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         Zero.Connect(this.Owner, Events.CollisionStarted,     this.OnCollisionStarted);
+
     }
 
     function OnLogicUpdate(event : UpdateEvent)
     {
+        this.Timer += event.Dt;
+        
+    if(this.Timer > 1){
+        this.Timer = 0;
+        this.Seconds += 1;
+        
+            if(this.Seconds == 1){
+                this.Space.SoundSpace.PlayCue(this.Sw2Hit);
+    }
+                    if(this.Seconds == 2){
+                        this.Space.SoundSpace.PlayCue(this.Sw3Hit);
+            }
+            
+                            if(this.Seconds == 3){
+                                this.Space.SoundSpace.PlayCue(this.Sw1Hit);
+                            }
+                            
+                        }
+
+    if (Zero.Keyboard.KeyIsPressed(Keys.Control))
+    {
+        this.Seconds = 0;
+    }
+    
+Console.WriteLine("`this.Seconds`");
+        
         var door = this.Space.FindObjectByName("Door");
         var sw_1 = this.Space.FindObjectByName("Switch").Transform.Translation;
         var sw_2 = this.Space.FindObjectByName("Switch2").Transform.Translation;
@@ -93,6 +123,17 @@ class Interaction : ZilchComponent
         
         if(event.OtherObject.Name == "Goal"){
             this.Space.LoadLevel(this.Puzzle2);
+        }
+        
+        
+        if(event.OtherObject.Name == "Trigger1"){
+            this.Space.SoundSpace.PlayCue(this.Sw3Hit);
+        }
+        if(event.OtherObject.Name == "Trigger2"){
+            this.Space.SoundSpace.PlayCue(this.Sw2Hit);
+        }
+        if(event.OtherObject.Name == "Trigger3"){
+            this.Space.SoundSpace.PlayCue(this.Sw1Hit);
         }
 
     

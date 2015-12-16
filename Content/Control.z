@@ -1,5 +1,12 @@
 class Control : ZilchComponent
 {
+    var Sw1Hit : SoundCue = SoundCue.Find("SwHit");
+    var Sw2Hit : SoundCue = SoundCue.Find("DoorOpen");
+    var Sw3Hit : SoundCue = SoundCue.Find("Switch3");
+
+    var ConTimer : Real = 0;
+    var ConSeconds : Real = 0;    
+
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -66,6 +73,7 @@ if(player.RigidBody.Velocity.Y <= -75){
     {
         this.Space.ReloadLevel();
     }
+    
 
     }
 }

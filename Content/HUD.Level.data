@@ -170,7 +170,6 @@ Level =
 		},
 		Timer = 
 		{
-			string HudLevel = "",
 		},
 		Hierarchy = 
 		{
