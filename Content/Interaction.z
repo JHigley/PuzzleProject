@@ -7,6 +7,7 @@ class Interaction : ZilchComponent
     
     var Puzzle1 : Level = Level.Find("Maze1");
     var Puzzle2 : Level = Level.Find("Maze2");
+    var Win : Level = Level.Find("Win");
     
     var Sw1 : Integer = 0;
     
@@ -23,6 +24,9 @@ class Interaction : ZilchComponent
     function OnLogicUpdate(event : UpdateEvent)
     {
         this.Timer += event.Dt;
+        
+if(this.Space.CurrentLevel == this.Puzzle1){
+
         
     if(this.Timer > 1){
         this.Timer = 0;
@@ -41,11 +45,35 @@ class Interaction : ZilchComponent
                             
                         }
 
+}
+
+if(this.Space.CurrentLevel == this.Puzzle2){
+
+    if(this.Timer > 1){
+        this.Timer = 0;
+        this.Seconds += 1;
+        
+            if(this.Seconds == 1){
+                this.Space.SoundSpace.PlayCue(this.Sw1Hit);
+    }
+                    if(this.Seconds == 2){
+                        this.Space.SoundSpace.PlayCue(this.Sw3Hit);
+            }
+            
+                            if(this.Seconds == 3){
+                                this.Space.SoundSpace.PlayCue(this.Sw2Hit);
+                            }
+                            
+                        }
+
+
+}    
     if (Zero.Keyboard.KeyIsPressed(Keys.Control))
     {
         this.Seconds = 0;
     }
     
+
 Console.WriteLine("`this.Seconds`");
         
         var door = this.Space.FindObjectByName("Door");
@@ -121,11 +149,21 @@ Console.WriteLine("`this.Seconds`");
            sw3Hit = true;
         }
         
+if(this.Space.CurrentLevel == this.Puzzle1){
         if(event.OtherObject.Name == "Goal"){
             this.Space.LoadLevel(this.Puzzle2);
         }
+    }
+    
+if(this.Space.CurrentLevel == this.Puzzle2){
+        if(event.OtherObject.Name == "Goal"){
+            this.Space.LoadLevel(this.Win);
+        }
+    }
+    
         
         
+if(this.Space.CurrentLevel == this.Puzzle1){
         if(event.OtherObject.Name == "Trigger1"){
             this.Space.SoundSpace.PlayCue(this.Sw3Hit);
         }
@@ -135,6 +173,19 @@ Console.WriteLine("`this.Seconds`");
         if(event.OtherObject.Name == "Trigger3"){
             this.Space.SoundSpace.PlayCue(this.Sw1Hit);
         }
+    }
+    
+if(this.Space.CurrentLevel == this.Puzzle2){
+        if(event.OtherObject.Name == "Trigger1"){
+            this.Space.SoundSpace.PlayCue(this.Sw1Hit);
+        }
+        if(event.OtherObject.Name == "Trigger2"){
+            this.Space.SoundSpace.PlayCue(this.Sw3Hit);
+        }
+        if(event.OtherObject.Name == "Trigger3"){
+            this.Space.SoundSpace.PlayCue(this.Sw2Hit);
+        }
+    }
 
     
 //    }
