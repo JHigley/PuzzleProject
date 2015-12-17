@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "discoball",
+		uint64 ResourceId = 5664c7d648b9a284,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 369,
+		uint FrameSizeY = 350,
+		uint FrameCount = 2,
+		float FrameDelay = 0.125,
+		float OriginX = 184,
+		float OriginY = 175,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},
