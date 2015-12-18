@@ -37,12 +37,6 @@ if(Zero.Keyboard.KeyIsPressed(Keys.Left)){
     player.Sprite.SpriteSource = SpriteSource.Find("maze guy animation left");
 }
 
-if(Zero.Keyboard.KeyIsDown(Keys.G)){
-    player.BoxCollider.Ghost = true;
-}
-else{
-    player.BoxCollider.Ghost = false;
-}
 
     
       if (Zero.Keyboard.KeyIsDown(Keys.Up))

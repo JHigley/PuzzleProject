@@ -98,7 +98,7 @@ Console.WriteLine("`this.Seconds`");
         Console.WriteLine("`this.Sw1`");
         
         
-    if(sw_1 == Real3(100,100,0) && sw_2 == Real3(100,100,0) && sw_3 == Real3(100,100,0)){
+ /*   if(sw_1 == Real3(100,100,0) && sw_2 == Real3(100,100,0) && sw_3 == Real3(100,100,0)){
         this.Sw1 = 0;
         
         sw_1 = Real3(263.085,-76.3407,0);
@@ -109,7 +109,7 @@ Console.WriteLine("`this.Seconds`");
         
         sw_3 = Real3(86.1554,56.6009,0);
         this.Space.FindObjectByName("Switch3").Sprite.Visible = true;
-    }
+    }*/
     }
     
     function OnCollisionStarted(event : CollisionEvent)
@@ -117,6 +117,10 @@ Console.WriteLine("`this.Seconds`");
         var sw_1 = this.Space.FindObjectByName("Switch");
         var sw_2 = this.Space.FindObjectByName("Switch2");
         var sw_3 = this.Space.FindObjectByName("Switch3");
+        
+        var trig1 = this.Space.FindObjectByName("Trigger1");
+        var trig2 = this.Space.FindObjectByName("Trigger2");
+        var trig3 = this.Space.FindObjectByName("Trigger3");
         
         var sw1Hit = false;
         var sw2Hit = false;
@@ -126,7 +130,8 @@ Console.WriteLine("`this.Seconds`");
         if(event.OtherObject.Name == "Switch"){
             this.Sw1 += 5;
             sw_1.Sprite.Visible = false;
-          //  sw_1.Transform.Translation = Real3(100,100,0);
+            sw_1.Transform.Translation = Real3(100,100,0);
+            //trig1.Transform.Translation = Real3(200,200,0);
             
         this.Space.SoundSpace.PlayCue(this.Sw1Hit);
             sw1Hit = true;
@@ -135,7 +140,8 @@ Console.WriteLine("`this.Seconds`");
         if(event.OtherObject.Name == "Switch2"){
             this.Sw1 -= 3;
             sw_2.Sprite.Visible = false;
-           // sw_2.Transform.Translation = Real3(100,100,0);
+            sw_2.Transform.Translation = Real3(100,100,0);
+            //trig2.Transform.Translation = Real3(200,200,0);
             
         this.Space.SoundSpace.PlayCue(this.Sw2Hit);
             sw2Hit = true;
@@ -143,7 +149,8 @@ Console.WriteLine("`this.Seconds`");
         if(event.OtherObject.Name == "Switch3"){
             this.Sw1 *= 7;
             sw_3.Sprite.Visible = false;
-           // sw_3.Transform.Translation = Real3(100,100,0);
+            sw_3.Transform.Translation = Real3(100,100,0);
+            //trig3.Transform.Translation = Real3(200,200,0);
            
         this.Space.SoundSpace.PlayCue(this.Sw3Hit);
            sw3Hit = true;
